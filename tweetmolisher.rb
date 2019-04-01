@@ -12,14 +12,13 @@ max_id = ENV["MAX_ID"]
 running = true
 
 while running
-  options = {count: 2}
+  options = {}
   options[:max_id] = max_id unless max_id.nil?
   deletable = []
 
   tweets = client.fetch_my_tweets(options)
   tweets.each do |tweet|
     next if tweet.id == max_id
-
 
     puts "\e[34m#{tweet.created_at}\e[0m #{tweet.full_text} #{tweet.url}"
     begin
